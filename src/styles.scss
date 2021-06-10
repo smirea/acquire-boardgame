@@ -1,0 +1,114 @@
+// :root, html, body {
+//     overflow: hidden;
+// }
+.App {
+    padding: 1rem;
+}
+
+.bp3-html-table td {
+    vertical-align: middle!important;
+}
+
+canvas {
+    width: 100vw;
+    height: 100vh;
+    touch-action: none;
+}
+
+/************/
+
+$tile-border: 2px;
+$tile-size: 5rem;
+
+/******* Board *******/
+
+.Board {
+    display: inline-block;
+    background: #333;
+    margin: 1rem;
+    padding: $tile-border 0 0 $tile-border;
+}
+
+.Board-row {
+    display: flex;
+}
+
+.Board-cell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    // box-shadow: 0 0 0 $tile-border black inset;
+    margin: 0 $tile-border $tile-border 0;
+    width: $tile-size;
+    height: $tile-size;
+    font-size: 1.75rem;
+    font-family: monospace;
+    user-select: none;
+    cursor: pointer;
+
+    small {
+        font-size: 1rem;
+    }
+
+    .Tile {
+        z-index: 100;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+/******* Tile *******/
+
+.Tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eee;
+    box-shadow: 0 0 0 $tile-border black inset;
+    width: $tile-size;
+    height: $tile-size;
+    cursor: pointer;
+    transition: all .3s ease;
+
+    &:hover {
+        z-index: 2;
+        transform: scale(1.25);
+    }
+
+    &:active {
+        transform: scale(1.15);
+    }
+}
+
+.TileName {
+    display: flex;
+    align-items: center;
+    font-family: monospace;
+    user-select: none;
+
+    .TileName-number {
+        font-size: 1.75rem;
+    }
+
+    .TileName-letter {
+        font-size: 1.25rem;
+    }
+}
+
+/******* Player *******/
+
+.Hand {
+    position: relative;
+    display: inline-flex;
+    background: #ccc;
+    padding: .5rem;
+
+    > * + * {
+        margin-left: .25rem;
+    }
+}
