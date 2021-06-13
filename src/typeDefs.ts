@@ -27,6 +27,7 @@ export type TileState = Readonly<{
 
 export type BoardState = {
     tiles: (Tile | null)[][];
+    highlightedCells: Record<string, string>;
 };
 
 export type DeckState = {

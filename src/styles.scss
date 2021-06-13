@@ -1,6 +1,3 @@
-// :root, html, body {
-//     overflow: hidden;
-// }
 .App {
     padding: 1rem;
 }
@@ -18,7 +15,8 @@ canvas {
 /************/
 
 $tile-border: 2px;
-$tile-size: 5rem;
+$tile-size: 4.5rem;
+$tile-font-size: ($tile-size * 0.35);
 
 /******* Board *******/
 
@@ -43,14 +41,8 @@ $tile-size: 5rem;
     margin: 0 $tile-border $tile-border 0;
     width: $tile-size;
     height: $tile-size;
-    font-size: 1.75rem;
-    font-family: monospace;
     user-select: none;
     cursor: pointer;
-
-    small {
-        font-size: 1rem;
-    }
 
     .Tile {
         z-index: 100;
@@ -76,7 +68,7 @@ $tile-size: 5rem;
     transition: all .3s ease;
 
     &:hover {
-        z-index: 2;
+        z-index: 1000000;
         transform: scale(1.25);
     }
 
@@ -85,18 +77,36 @@ $tile-size: 5rem;
     }
 }
 
+.TileHighlight {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all .75s ease;
+    opacity: 0.5;
+    pointer-events: none;
+    transform: scale(1.5);
+
+    &[data-active] {
+        transform: scale(1);
+    }
+}
+
 .TileName {
     display: flex;
-    align-items: center;
-    font-family: monospace;
+    align-items: flex-end;
+    // font-family: monospace;
     user-select: none;
 
     .TileName-number {
-        font-size: 1.75rem;
+        font-size: $tile-font-size;
     }
 
     .TileName-letter {
-        font-size: 1.25rem;
+        font-size: ($tile-font-size * .75);
+        padding-bottom: ($tile-font-size * 0.1);
     }
 }
 

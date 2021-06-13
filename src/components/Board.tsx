@@ -19,13 +19,13 @@ export default class Board extends React.PureComponent<{ instance: BoardInstance
                 <div key={letter} className='Board-row'>
                     {NUMBERS.map((number, j) => {
                         const tile = instance.state.tiles[i][j];
+                        const highlight = instance.getHighlight(number, letter);
 
                         return <div key={number} className='Board-cell'>
                             <TileName letter={letter} number={number} />
 
-                            {tile &&
-                                <Tile instance={tile} />
-                            }
+                            {tile && <Tile instance={tile} />}
+                            <TileHighlight color={highlight} />
                         </div>
                     })}
                 </div>
@@ -33,3 +33,10 @@ export default class Board extends React.PureComponent<{ instance: BoardInstance
         </div>
     }
 }
+
+const TileHighlight: React.FC<{ color: string | null }> = ({ color }) =>
+    <div
+        className='TileHighlight'
+        data-active={color ? '' : undefined}
+        style={color ? { backgroundColor: color } : undefined}
+    />

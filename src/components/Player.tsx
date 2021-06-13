@@ -20,9 +20,19 @@ export default class Player extends React.PureComponent<{ instance: PlayerInstan
                     <Tile
                         key={tile.id}
                         instance={tile}
-                        onClick={() => instance.playTile(tile)}
+                        onClick={() => {
+                            instance.playTile(tile);
+                            tile.highlightOnBoard(null);
+                        }}
+                        onMouseEnter={() => tile.highlightOnBoard('blue')}
+                        onMouseLeave={() => tile.highlightOnBoard(null)}
                     />
                 )}
+                {!!tiles.length &&
+                    tiles[0].isHighlightedOnBoard()
+                        ? <div onClick={() => tiles.forEach(t => t.highlightOnBoard(null))}>clear</div>
+                        : <div onClick={() => tiles.forEach(t => t.highlightOnBoard('blue'))}>highlight</div>
+                }
             </div>
         </div>;
     }
