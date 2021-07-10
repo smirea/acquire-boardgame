@@ -3,6 +3,7 @@ import { useAppContext } from 'src/utils/AppContext';
 import Board from './Board';
 import GameInstance from 'src/logic/Game';
 import Player from './Player';
+import Deck from './Deck';
 
 class Game extends React.PureComponent<{ instance: GameInstance }> {
     render() {
@@ -10,6 +11,7 @@ class Game extends React.PureComponent<{ instance: GameInstance }> {
 
         return <div className='Game'>
             <Board instance={board} />
+            <Deck instance={tileDeck} />
             {players.map(player => <Player key={player.id} instance={player} />)}
         </div>
     }

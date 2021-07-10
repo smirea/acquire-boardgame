@@ -8,7 +8,6 @@ export type TileId = `t_${TileLetter}${TileNumber}`;
 export type DeckId = `d_${string}`;
 export type PlayerId = `p_${number}`;
 
-
 export type GameItemState = {
     id: Readonly<string>;
 };

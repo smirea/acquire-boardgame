@@ -23,4 +23,11 @@ export default class Player extends AbstractGameItem<PlayerState> {
             state.tiles = state.tiles.filter(t => t.id !== tile.id);
         });
     }
+
+    drawTile() {
+        if (this.state.tiles.length >= 6) return;
+
+        const tile = this.game.tileDeck.draw();
+        if (tile) this.addTile(tile);
+    }
 }

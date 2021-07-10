@@ -122,3 +122,19 @@ $tile-font-size: ($tile-size * 0.35);
         margin-left: .25rem;
     }
 }
+
+/******* Deck *******/
+
+.Deck {
+    .Tile {
+        background: red;
+    }
+
+    .TileName {
+        flex-direction: column;
+
+        .TileName-letter {
+            margin-top: -.5rem;
+        }
+    }
+}

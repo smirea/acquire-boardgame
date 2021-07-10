@@ -28,9 +28,7 @@ export default class Game {
 
         for (let i = 0; i < 6; ++i) {
             for (const player of this.players) {
-                const tile = this.tileDeck.draw();
-                if (!tile) break;
-                player.addTile(tile);
+                player.drawTile();
             }
         }
     }
