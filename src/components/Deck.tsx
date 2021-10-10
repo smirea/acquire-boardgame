@@ -6,11 +6,15 @@ export type DeckProps<T extends DeckInstance> = {
 };
 
 export default class Deck<T extends DeckInstance> extends React.PureComponent<DeckProps<T>> {
+    handleClick = () => {
+
+    }
+
     render() {
         const { instance, ...props } = this.props;
 
         return <div {...props} className='Deck'>
-            <div className='Tile'>
+            <div className='Tile' onClick={this.handleClick}>
                 <div className='TileName'>
                     <div className='TileName-number'>{instance.state.tiles.length}</div>
                     <div className='TileName-letter'>tiles</div>
